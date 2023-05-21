@@ -7,22 +7,22 @@ public class EntryPoint {
 
     public static void main(String[] args) {
 
-        Diarista marlene = new Diarista("Marlene Domingues", "Rua Direita N 8", "11 4141-4242", 80.0);
+        Diarista marlene = new Diarista("Marilene Domingues", "Rua Direita N 8", "11 4141-4242", 80.0);
 
         Cliente frederico = new Cliente("Francesco Virgulini Fiaaaunnnnn", "R Numere Quarent i Thcinquê", "11 5252-4141");
         frederico.getConta().depositar(1000.0);
 
         System.out.println("Dados de Francesco: " + frederico);
-        System.out.println("\nDados de Marlene: " + marlene);
+        System.out.println("\nDados de Marilene: " + marlene);
 
         frederico.contratarDiarista(marlene, 8);
 
         System.out.println();
         System.out.println("Extrato Frederico");
         frederico.getConta().exibirExtrato();
-        System.out.println();
 
-        System.out.println("Extrato Marlene");
+        System.out.println();
+        System.out.println("Extrato Marilene");
         marlene.getConta().exibirExtrato();
 
     }

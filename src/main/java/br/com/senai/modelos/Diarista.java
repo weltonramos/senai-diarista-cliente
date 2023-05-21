@@ -20,7 +20,7 @@ public class Diarista extends Pessoa {
         return this.valorHora * quantidadeHoras;
     }
 
-    private void realizarAtendimento() {
+    public void realizarAtendimento() {
         System.out.println("Realizando atendimento");
     }
 }

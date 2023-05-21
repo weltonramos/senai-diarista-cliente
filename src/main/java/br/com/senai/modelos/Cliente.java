@@ -19,5 +19,6 @@ public class Cliente extends Pessoa {
                             " \nSaldo atual: " + saldoAtual + "\nValor do serviço: " + horasASePagar);
 
         this.getConta().transferir(horasASePagar, diarista.getConta());
+        diarista.realizarAtendimento();
     }
 }
