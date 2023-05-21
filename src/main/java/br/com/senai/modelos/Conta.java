@@ -32,7 +32,7 @@ public class Conta {
         validarValor(valor);
         realizarCredito(valor);
 
-        String registro = String.format("Depósito realizado no valor de %.2f", valor);
+        String registro = String.format(" + Depósito realizado no valor de %.2f", valor);
         this.extrato.add(registro);
     }
 
@@ -43,10 +43,10 @@ public class Conta {
         this.realizarRetirada(valor);
         contaDestino.realizarCredito(valor);
 
-        String registroDeDebito = String.format("Transferência realizada para %s no valor de %.2f", contaDestino.getNomeCorrentista(), valor);
+        String registroDeDebito = String.format(" - Transferência realizada para %s no valor de %.2f", contaDestino.getNomeCorrentista(), valor);
         this.extrato.add(registroDeDebito);
 
-        String registroDeCredito = String.format("Transferência recebida de %s no valor de %.2f", this.getNomeCorrentista(), valor);
+        String registroDeCredito = String.format(" + Transferência recebida de %s no valor de %.2f", this.getNomeCorrentista(), valor);
         contaDestino.realizarRegistroExtrato(registroDeCredito);
     }
 
@@ -73,6 +73,7 @@ public class Conta {
         this.saldo -= valor;
     }
 
+    //ToDo: Verificar uma forma de separar o que é crédito e o que é débito
     private void realizarRegistroExtrato(String registro) {
         this.extrato.add(registro);
     }
