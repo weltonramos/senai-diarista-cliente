@@ -4,7 +4,7 @@ import java.security.InvalidParameterException;
 
 public class Diarista extends Pessoa {
 
-    private double valorHora;
+    private final double valorHora;
 
     public Diarista(String nome, String endereco, String telefone, double valorHora) {
 

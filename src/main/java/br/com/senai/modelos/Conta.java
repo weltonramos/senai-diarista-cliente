@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Conta {
 
-    private String nomeCorrentista;
+    private final String nomeCorrentista;
     private double saldo = 0.0;
     private final List<String> extrato = new ArrayList<>();
 
@@ -32,22 +32,18 @@ public class Conta {
         validarValor(valor);
         realizarCredito(valor);
 
-        String registro = String.format(" + Depósito realizado no valor de %.2f", valor);
-        this.extrato.add(registro);
+        realizarRegistroExtrato(Operacao.CREDITO_DEPOSITO, valor, this.getNomeCorrentista());
     }
 
     public void transferir(double valor, Conta contaDestino) {
 
         validarValor(valor);
 
-        this.realizarRetirada(valor);
+        realizarRetirada(valor);
         contaDestino.realizarCredito(valor);
 
-        String registroDeDebito = String.format(" - Transferência realizada para %s no valor de %.2f", contaDestino.getNomeCorrentista(), valor);
-        this.extrato.add(registroDeDebito);
-
-        String registroDeCredito = String.format(" + Transferência recebida de %s no valor de %.2f", this.getNomeCorrentista(), valor);
-        contaDestino.realizarRegistroExtrato(registroDeCredito);
+        realizarRegistroExtrato(Operacao.DEBITO_TRANSFERENCIA, valor, nomeCorrentista);
+        contaDestino.realizarRegistroExtrato(Operacao.CREDITO_TRANSFERENCIA, valor, contaDestino.getNomeCorrentista());
     }
 
     public void exibirExtrato() {
@@ -73,8 +69,9 @@ public class Conta {
         this.saldo -= valor;
     }
 
-    //ToDo: Verificar uma forma de separar o que é crédito e o que é débito
-    private void realizarRegistroExtrato(String registro) {
-        this.extrato.add(registro);
+    private void realizarRegistroExtrato(Operacao operacao, double valor, String titular) {
+
+        String registro = String.format("%s no valor de %.2f para %s", operacao, valor, titular);
+        extrato.add(registro);
     }
 }
