@@ -62,13 +62,7 @@ public class Conta {
 
     private void realizarRegistroExtrato(Operacao operacao, double valor) {
 
-        String registro;
-
-        if (operacao.toString().contains("DEBITO"))
-            registro = String.format("%s no valor de R$%.2f", operacao, valor);
-        else
-            registro = String.format("%s no valor de R$%.2f", operacao, valor);
-
+        String registro = String.format("%s no valor de R$%.2f", operacao, valor);
         extrato.add(registro);
     }
 }
