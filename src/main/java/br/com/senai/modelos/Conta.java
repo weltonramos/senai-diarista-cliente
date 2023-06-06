@@ -18,21 +18,12 @@ public class Conta {
         return this.saldo;
     }
 
-    public String getNomeCorrentista() {
-        return nomeCorrentista;
-    }
-
-    public void sacar(double valor) {
-        validarValor(valor);
-        realizarRetirada(valor);
-    }
-
     public void depositar(double valor) {
 
         validarValor(valor);
         realizarCredito(valor);
 
-        realizarRegistroExtrato(Operacao.CREDITO_DEPOSITO, valor, this.getNomeCorrentista());
+        realizarRegistroExtrato(Operacao.CREDITO_DEPOSITO, valor);
     }
 
     public void transferir(double valor, Conta contaDestino) {
@@ -42,8 +33,8 @@ public class Conta {
         realizarRetirada(valor);
         contaDestino.realizarCredito(valor);
 
-        realizarRegistroExtrato(Operacao.DEBITO_TRANSFERENCIA, valor, nomeCorrentista);
-        contaDestino.realizarRegistroExtrato(Operacao.CREDITO_TRANSFERENCIA, valor, contaDestino.getNomeCorrentista());
+        realizarRegistroExtrato(Operacao.DEBITO_TRANSFERENCIA, valor);
+        contaDestino.realizarRegistroExtrato(Operacao.CREDITO_TRANSFERENCIA, valor);
     }
 
     public void exibirExtrato() {
@@ -69,9 +60,15 @@ public class Conta {
         this.saldo -= valor;
     }
 
-    private void realizarRegistroExtrato(Operacao operacao, double valor, String titular) {
+    private void realizarRegistroExtrato(Operacao operacao, double valor) {
 
-        String registro = String.format("%s no valor de %.2f para %s", operacao, valor, titular);
+        String registro;
+
+        if (operacao.toString().contains("DEBITO"))
+            registro = String.format("%s no valor de R$%.2f", operacao, valor);
+        else
+            registro = String.format("%s no valor de R$%.2f", operacao, valor);
+
         extrato.add(registro);
     }
 }

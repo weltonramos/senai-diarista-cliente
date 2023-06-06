@@ -11,7 +11,7 @@ public abstract class Pessoa {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-         this.conta = new Conta(nome);
+        this.conta = new Conta(nome);
     }
 
     public String getNome() {
