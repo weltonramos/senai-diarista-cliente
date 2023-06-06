@@ -6,13 +6,8 @@ import java.util.List;
 
 public class Conta {
 
-    private final String nomeCorrentista;
     private double saldo = 0.0;
     private final List<String> extrato = new ArrayList<>();
-
-    public Conta(String nomeCorrentista) {
-        this.nomeCorrentista = nomeCorrentista;
-    }
 
     public double getSaldo() {
         return this.saldo;

@@ -2,16 +2,16 @@ package br.com.senai.modelos;
 
 public abstract class Pessoa {
 
-    private String nome;
-    private String endereco;
-    private String telefone;
-    private Conta conta;
+    private final String nome;
+    private final String endereco;
+    private final String telefone;
+    private final Conta conta;
 
     protected Pessoa(String nome, String endereco, String telefone) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.conta = new Conta(nome);
+        this.conta = new Conta();
     }
 
     public String getNome() {
