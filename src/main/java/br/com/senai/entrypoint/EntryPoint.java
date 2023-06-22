@@ -17,12 +17,10 @@ public class EntryPoint {
 
         frederico.contratarDiarista(marlene, 8);
 
-        System.out.println();
-        System.out.println("Extrato Frederico");
+        System.out.println("\nExtrato Frederico");
         frederico.getConta().exibirExtrato();
 
-        System.out.println();
-        System.out.println("Extrato Marilene");
+        System.out.println("\nExtrato Marilene");
         marlene.getConta().exibirExtrato();
 
     }

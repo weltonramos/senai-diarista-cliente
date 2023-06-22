@@ -13,7 +13,7 @@ public class Cliente extends Pessoa {
         double horasASePagar = diarista.calcularValorHora(quantidadeHoras);
         double saldoAtual = this.getConta().getSaldo();
 
-        if (saldoAtual <= horasASePagar)
+        if (saldoAtual < horasASePagar)
             throw new InvalidParameterException(
                     "Não há saldo suficiênte para contratar a diarista " + diarista.getNome() +
                             " \nSaldo atual: " + saldoAtual + "\nValor do serviço: " + horasASePagar);

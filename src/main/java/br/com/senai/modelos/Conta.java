@@ -57,7 +57,7 @@ public class Conta {
 
     private void realizarRegistroExtrato(Operacao operacao, double valor) {
 
-        String registro = String.format("%s no valor de R$%.2f", operacao, valor);
+        String registro = String.format("%s - valor de R$%.2f", operacao.getDescricao(), valor);
         extrato.add(registro);
     }
 }
